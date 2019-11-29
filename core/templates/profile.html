@@ -8,10 +8,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
 
-    <title>My profile</title>
+    <title>Profile</title>
   </head>
   <body>
-
+    {% for post in posts %}
+        <p>{{post.author}}</p>
+        <p>{{post.body}}</p>
+    <a href="/delete?id={{post.id}}">Delete</a>
+    {% endfor %}
+    <br>
+    <a href="/logout">Log Out</a>
+    <br>
+    <a href="/home">Home</a>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

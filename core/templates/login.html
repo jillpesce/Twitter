@@ -8,10 +8,25 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
 
-    <title>Login or Signup</title>
+    <title>Login</title>
   </head>
   <body>
-
+        <h1>Sign Up</h1>
+        <form method="POST" action="/signup/">
+            {% csrf_token %}
+            <input name="username" placeholder="username" />
+            <input name="email" placeholder="email" />
+            <input name="password" placeholder="password" type="password" />
+            <input type="submit" />
+        </form>
+        
+        <h1>Log In</h1>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <input name="username" placeholder="username" />
+            <input name="password" placeholder="password" type="password" />
+            <input type="submit" />
+        </form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
