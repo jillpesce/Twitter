@@ -1,31 +1,28 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <title>Login</title>
-  </head>
+</head>
   <body>
-        <h1>Sign Up</h1>
+        <h1 class="is-size-2">Sign Up</h1>        
         <form method="POST" action="/signup/">
             {% csrf_token %}
-            <input name="username" placeholder="username" />
-            <input name="email" placeholder="email" />
-            <input name="password" placeholder="password" type="password" />
-            <input type="submit" />
+            <input class="input" name="username" placeholder="username" />
+            <input class="input" name="email" placeholder="email" />
+            <input class="input" name="password" placeholder="password" type="password" />
+            <input class="button" type="submit" />
         </form>
-        
-        <h1>Log In</h1>
+        <br>
+        <h1 class="is-size-2">Log In</h1>        
         <form method="POST" action="">
             {% csrf_token %}
-            <input name="username" placeholder="username" />
-            <input name="password" placeholder="password" type="password" />
-            <input type="submit" />
+            <input class="input" name="username" placeholder="username" />
+            <input class="input" name="password" placeholder="password" type="password" />
+            <input class="button" type="submit" />
         </form>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

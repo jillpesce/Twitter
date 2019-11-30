@@ -1,37 +1,80 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <title>Home</title>
-  </head>
-  <body>
+</head>
 
+<body>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Welcome to Twitter
+                </h1>
+                <h2 class="subtitle">
+                    Defend and protect the user’s voice
+                </h2>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+    <div class="container"></div>
     <form method="POST" action="/home/">
         {% csrf_token %}
-        <p>Create Post</p>
-        <input name="body" placeholder="body" />
-        <input type="submit" value="Create"/>
+        <input class="input" type="text" name="body" placeholder="What would you like to tweet?">
+        <input class="button" type="submit" value="Tweet" />
     </form>
+    </div>
     <hr />
-    {% for post in posts %}
-        <p>{{post.author}}</p>
-        <p>{{post.body}}</p>
-    <a href="/delete?id={{post.id}}">Delete</a>
-    {% endfor %}
-    <br>
-    <a href="/logout">Log Out</a>
-    <br>
-    <a href="/profile">My Profile</a>
+</section>
+<div class="columns">
+        <div class="column">
+    <section class="section">
+        {% for post in posts %}
+        <div class="container">
+            <a href="/profile?id={{post.id}}">{{post.author}}</a>
+            <p class="is-size-7 has-text-grey">~{{post.date}}</p>    
+            <p>{{post.body}}</p>
+            
+            <a href="/like?id={{post.id}}">Like ({{post.likes.count}})</a>
+            <a href="/delete?id={{post.id}}">Delete</a>
+            <br>
+            <hr> 
+        </div>
+        {% endfor %}
+        <div class="container">
+                <a href="/logout">Log Out</a>
+                <br>
+                </div>
+        </div>
+        <div class="column">
+            <h1 class="is-size-2">Hashtags</h1>
+                {% for tag in hashtags %}
+                <div class="container">  
+                    <a href="/hashtag/{{tag.name}}">#{{tag.name}}</a>
+                    <br>
+                    <hr> 
+                </div>
+                {% endfor %}
+            </div>
+            </div>
+    </section>
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js" integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"
+        integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>

@@ -22,6 +22,7 @@ urlpatterns = [
     path('profile/', profile, name='profile'),
     path('hashtag/<name>', hashtag, name='hashtag'),
     path("delete/", delete_view, name="delete"),
+    path("like/", like_view, name="delete"),
     path("", login_view, name="login"),
     path("signup/", signup_view, name="signup"),
     path("logout/", logout_view, name="logout"),
