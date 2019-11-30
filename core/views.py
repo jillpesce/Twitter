@@ -12,20 +12,20 @@ def home(request):
         Post.objects.all().order_by('-date')
         return redirect("/home")
     else:
-        posts = Post.objects.all()
+        posts = Post.objects.all().order_by('-date')
         hashtags = Hashtag.objects.all()
-    return render(request, "home.html", {"posts": posts, "hashtags": hashtags})
+    return render(request, "home.html", {"posts": posts, "hashtags": hashtags, "user": request.user})
 
 def profile(request):
     post = Post.objects.get(id=request.GET['id'])
     author = post.author
     posts = Post.objects.filter(author=author)
-    return render(request, "profile.html", {"posts": posts, "author": author})
+    return render(request, "profile.html", {"posts": posts, "author": author, "user": request.user})
 
 def hashtag(request, name):
     hashtag = Hashtag.objects.get(name=name)
     posts = hashtag.posts.all()
-    return render(request, "hashtag.html", {"hashtag": hashtag, "posts": posts})
+    return render(request, "hashtag.html", {"hashtag": hashtag, "posts": posts, "user": request.user})
 
 def login_view(request):
     if request.method == "POST":
@@ -59,6 +59,9 @@ def signup_view(request):
 
 def delete_view(request):
     post = Post.objects.get(id=request.GET['id'])
+    for hashtag in post.hashtag_set.all():
+        if len(hashtag.posts.all()) <= 1:
+            hashtag.delete()
     post.delete()
     next = request.POST.get('next', '/')
     return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
