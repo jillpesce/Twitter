@@ -19,4 +19,8 @@ __/like?id=id:__ Likes or unlikes the post with specified id.
 # Running the Server
 Navigate to the root directory of the project
 
-Run `python3 manage.py runserver` in the command line
+`pip install django-bulma`
+
+`python manage.py runserver`
+
+Go to http://localhost:8000/
